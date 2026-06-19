@@ -2,6 +2,7 @@
 
 Please set up a new React-based web application with a standard GitHub Actions CI configuration. Do **NOT** add any AI Build Assistant or retry workflows yet; we will add those later to simulate a real user integration.
 
+TEST ATTEMPT 1
 ## Requirements
 
 1. **React Application Setup:**
