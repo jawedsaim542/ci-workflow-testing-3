@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import nonexistent from 'nonexistent-package-abc';
+import nonexistent from 'nonexistent-package-abc'; // testing comment
 import { getOverlapWorkingHours, formatLocalTime } from './utils';
 
 describe('TimeZone Utilities', () => {
