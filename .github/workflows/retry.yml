@@ -12,7 +12,22 @@ jobs:
     permissions:
       actions: write
     steps:
+      - name: Check if failure is transient
+        id: check_transient
+        run: |
+          gh run download ${{ github.event.workflow_run.id }} -n transient-status --dir . || echo "No transient status found"
+          if [ -f transient_status.txt ] && [ "$(cat transient_status.txt)" = "true" ]; then
+            echo "is_transient=true" >> $GITHUB_OUTPUT
+            echo "Transient failure detected. Proceeding with rerun."
+          else
+            echo "is_transient=false" >> $GITHUB_OUTPUT
+            echo "Non-transient or unknown failure. Skipping auto-retry."
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+
       - name: Rerun failed jobs
+        if: steps.check_transient.outputs.is_transient == 'true'
         run: gh run rerun ${{ github.event.workflow_run.id }} --failed --repo ${{ github.repository }}
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
