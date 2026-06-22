@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
     - name: Checkout repository
@@ -27,4 +30,12 @@ jobs:
       run: npm run build
 
     - name: Run unit tests
-      run: npm run test
+      shell: bash
+      run: npm run test 2>&1 | tee build_failure.log
+
+    - name: AI Build Assistant
+      if: failure()
+      uses: saimjawed254/accenture-intern-assignment@main
+      with:
+        log-file: 'build_failure.log'
+        gemini-api-key: ${{ secrets.GEMINI_API_KEY }}

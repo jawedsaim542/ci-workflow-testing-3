@@ -1,0 +1,25 @@
+name: Apply AI Suggestion
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  apply:
+    if: ${{ github.event.issue.pull_request && github.event.comment.body == '/apply-fix' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          ref: refs/pull/${{ github.event.issue.number }}/head
+
+      - name: Apply AI Fix
+        uses: saimjawed254/accenture-intern-assignment@main
+        with:
+          mode: 'apply-fix'
+          gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
+          github-token: ${{ secrets.PAT_TOKEN }}

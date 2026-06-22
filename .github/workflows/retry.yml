@@ -2,7 +2,7 @@ name: Auto-Retry Failed Builds
 
 on:
   workflow_run:
-    workflows: ["YOUR_CI_WORKFLOW_NAME"]  # Replace with your CI workflow's name
+    workflows: ["React CI"]  # Replace with your CI workflow's name
     types: [completed]
 
 jobs:
