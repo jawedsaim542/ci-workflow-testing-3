@@ -8,7 +8,7 @@
  * @returns {string} The formatted local time string.
  */
 export function formatLocalTime(dateString) {
-  // Trigger build to test ChatOps self-healing flow
+  // Trigger build to test final self-healing flow with attempt counting and conditional retry
   const date = new Date(dateString);
   return date.toLocaleTimeString('en-US', {
     hour: 'numeric',
