@@ -8,7 +8,7 @@
  * @returns {string} The formatted local time string.
  */
 export function formatLocalTime(dateString) {
-  // Trigger final self-healing flow test
+  // Trigger final self-healing flow test (with prioritized code fixes)
   const date = new Date(dateString);
   return date.toLocaleTimeString('en-US', {
     hour: 'numeric',
