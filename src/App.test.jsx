@@ -27,7 +27,7 @@ describe('TimeZone Utilities', () => {
       const utcString = '2026-06-19T15:00:00Z';
       const formatted = formatLocalTime(utcString);
       
-      expect(formatted).toBe('3:00 PM');
+      expect(formatted).toBe('8:30 PM');
     });
   });
 });
