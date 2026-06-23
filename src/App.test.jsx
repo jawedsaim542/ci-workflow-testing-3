@@ -7,7 +7,7 @@ describe('TimeZone Utilities', () => {
       // If both are UTC (offset 0), standard working hours (9 AM to 5 PM)
       // should overlap perfectly on UTC hours 9 through 17.
       const overlap = getOverlapWorkingHours(0, 0);
-      expect(overlap).toEqual([9, 10, 11, 12, 13, 14, 15, 16, 17]);
+      expect(overlap).toEqual([10, 11, 12, 13, 14, 15, 16]);
     });
 
     it('returns empty array when there is no working hour overlap', () => {

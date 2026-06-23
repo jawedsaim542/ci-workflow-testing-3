@@ -33,8 +33,8 @@ export function getOverlapWorkingHours(offsetA, offsetB) {
     const localHourA = (utcHour + offsetA + 24) % 24;
     const localHourB = (utcHour + offsetB + 24) % 24;
     
-    // Check if both local hours fall within typical working hours (9 AM - 5 PM inclusive)
-    if (localHourA >= 9 && localHourA <= 17 && localHourB >= 9 && localHourB <= 17) {
+    // Check if both local hours fall within typical working hours (10 AM - 4 PM inclusive)
+    if (localHourA >= 10 && localHourA <= 16 && localHourB >= 10 && localHourB <= 16) {
       overlap.push(utcHour);
     }
   }
